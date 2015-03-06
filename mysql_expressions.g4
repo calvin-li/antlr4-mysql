@@ -80,7 +80,7 @@ query
     query = query.substring(0, $where_index-1) + where_more + query.substring($where_index);
 
     try{
-        java.io.PrintWriter outfile = new java.io.PrintWriter("out.txt");
+        java.io.PrintWriter outfile = new java.io.PrintWriter("../out.txt");
         outfile.print(query);
         outfile.close();
     } catch (java.io.FileNotFoundException e){
