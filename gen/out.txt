@@ -1,0 +1,33 @@
+SELECT alias1.`col_varchar_nokey` AS field4, alias2.`col_varchar_nokey` AS field5,      alias1 . `col_int_key` AS field1 , alias1 . `col_varchar_key` AS field2 , alias1 . `col_varchar_nokey` AS field3
+FROM (
+    (
+        SELECT   SQ1_alias1 . * FROM (
+            C AS SQ1_alias1 INNER JOIN (
+                C AS SQ1_alias2
+            ) ON (
+                SQ1_alias3 . `col_varchar_key` = SQ1_alias2 . `col_varchar_nokey`
+            )
+        )
+    ) AS alias1 , (
+        SELECT   SQ2_alias1 . * FROM (
+         view_CC AS SQ2_alias1 LEFT  JOIN CC AS SQ2_alias2 ON (
+                SQ2_alias2 . `col_varchar_key` = SQ2_alias1 . `col_varchar_key`
+            )
+        )
+    ) AS alias2
+)
+WHERE
+alias2.`col_int_nokey` < 55 OR alias1.`col_varchar_nokey` != tvybc OR alias1.`col_int_key` >= 64 OR alias2.`col_int_nokey` > 75 OR 
+(
+        alias1 . `col_varchar_key` <= ANY (
+            SELECT 'j' UNION  SELECT 'c'
+        )
+    )
+AND (
+        alias1 . `pk` = alias2 . `col_int_key` AND alias1 . `col_int_key` = 80
+    )
+    HAVING field4 < 'y' ORDER BY CONCAT( 
+        alias2 . `col_varchar_nokey`, alias1 . `col_varchar_nokey`
+    ) , CONCAT(
+        alias1 . `col_varchar_key`, alias2 . `col_varchar_key`
+    ) , alias1 . `col_int_key` , alias2 .`pk` ASC, field1, field2, field3 ;
