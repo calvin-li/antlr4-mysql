@@ -1,5 +1,10 @@
 grammar mysql_expressions;
 
+@header{
+	import java.util.Random; 
+	import java.io.*;
+}
+
 query
     locals[
         ArrayList<Integer> tables = new ArrayList<Integer>(),
@@ -9,7 +14,8 @@ query
     explain? SELECT DISTINCT? STRAIGHT_JOIN? SQL_SMALL_RESULT? simple_select_list
     FROM join_list {$where_index = $text.length();} where_clause group_by_clause? having_clause order_by_clause SEMI
  {
-    java.util.Random rng = new java.util.Random(0);
+	pA.test();
+    Random rng = new Random(0);
     String query = $text;
 
     String[] types = {"int", "varchar"};
@@ -80,10 +86,10 @@ query
     query = query.substring(0, $where_index-1) + where_more + query.substring($where_index);
 
     try{
-        java.io.PrintWriter outfile = new java.io.PrintWriter("../out.txt");
+        PrintWriter outfile = new PrintWriter("out.txt");
         outfile.print(query);
         outfile.close();
-    } catch (java.io.FileNotFoundException e){
+    } catch (FileNotFoundException e){
         System.err.println("Cannot open output file");
     }
  }
