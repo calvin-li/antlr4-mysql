@@ -2,6 +2,9 @@ package gen;
 
 import java.util.Random;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.charset.Charset;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -57,8 +60,17 @@ public class pA {
         text = text.replaceFirst("SELECT", "SELECT" + select_more);
 
         String where_more = "\n";
+        int where_num = 0;
 
-        for(int i=0; i<4; i++){
+        try{
+            where_num = String.parseInt(
+                Files.readAllLines(
+                    Paths.get("where_num.txt"), Charset.defaultCharset() ));
+        } catch (IOException e){
+            where_num = 0;
+        }
+
+        for(int i=0; i<rng.nextInt(where_num); i++){
             String alias = "alias" + (rng.nextInt(tables.size())+1);
 
             String type = random(types);

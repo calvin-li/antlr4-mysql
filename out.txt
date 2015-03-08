@@ -17,7 +17,7 @@ FROM (
     ) AS alias2
 )
 WHERE
-alias2.`col_int_nokey` < 55 OR alias1.`col_varchar_nokey` != tvybc OR alias1.`col_int_key` >= 64 OR alias2.`col_int_nokey` > 75 OR 
+alias1.`col_varchar_nokey` > vcras AND alias2.`col_int_key` != 94 AND alias2.`col_int_key` >= -5 OR alias1.`col_int_nokey` != 6 AND alias2.`col_varchar_nokey` = ylueg AND alias2.`col_int_nokey` <> -64 OR alias2.`col_int_key` <= -86 OR alias2.`col_int_key` != 37 AND alias2.`col_int_nokey` >= 95 AND alias2.`col_varchar_nokey` > dxehx OR 
 (
         alias1 . `col_varchar_key` <= ANY (
             SELECT 'j' UNION  SELECT 'c'
