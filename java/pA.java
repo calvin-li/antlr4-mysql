@@ -60,15 +60,7 @@ public class pA {
         text = text.replaceFirst("SELECT", "SELECT" + select_more);
 
         String where_more = "\n";
-        int where_num = 0;
-
-        try{
-            where_num = String.parseInt(
-                Files.readAllLines(
-                    Paths.get("where_num.txt"), Charset.defaultCharset() ));
-        } catch (IOException e){
-            where_num = 0;
-        }
+        int where_num = 50;
 
         for(int i=0; i<rng.nextInt(where_num); i++){
             String alias = "alias" + (rng.nextInt(tables.size())+1);
