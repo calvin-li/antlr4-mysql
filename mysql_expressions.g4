@@ -2,6 +2,7 @@ grammar mysql_expressions;
 
 @header{
 	import java.util.Random; 
+	import java.util.HashMap;
 	import java.io.*;
 }
 
@@ -9,13 +10,9 @@ query
     locals[
         ArrayList<Integer> tables = new ArrayList<Integer>(),
         ArrayList<String> select_fields = new ArrayList<String>(),
-        int where_index = -1;
 ]:
-    WS? explain? SELECT DISTINCT? STRAIGHT_JOIN? SQL_SMALL_RESULT? (simple_select_list | aggregate_select_list)
-    FROM join_list {$where_index = $text.length();} where_clause group_by_clause? having_clause order_by_clause? SEMI? EOF?
- {
-	//pA.test($text, $tables, $select_fields, $where_index);
- }
+    WS? explain? SELECT DISTINCT? STRAIGHT_JOIN? SQL_SMALL_RESULT? (simple_select_list | {fuzzer.Visitor.index.put("AGG", $text.length());} aggregate_select_list)
+    FROM join_list {fuzzer.Visitor.index.put("WHERE", $text.length());} where_clause group_by_clause? having_clause order_by_clause? SEMI? EOF?
 ;
 
 explain:
@@ -245,122 +242,130 @@ field:
     GRAVE PK GRAVE | GRAVE COLUMN GRAVE | FIELDTK ;
 
 aggregate:
-    AGGREGATE_OP LPAREN DISTINCT? ;
+    a = AGGREGATE_OP
+    {
+    if(!fuzzer.Visitor.index.containsKey("AGGL"))
+        fuzzer.Visitor.index.put(
+            "AGGL",
+            $a.text.trim().length()
+        );
+    }
+    LPAREN DISTINCT? ;
 
-SELECT: 'SELECT' WS? {if(false) System.out.print(getText() + " ");};
+SELECT: 'SELECT' WS? ;
 
-DISTINCT: 'DISTINCT' WS? {if(false) System.out.print(getText() + " ");};
+DISTINCT: 'DISTINCT' WS? ;
 
-ANY: 'ANY' WS? {if(false) System.out.print(getText() + " ");};
+ANY: 'ANY' WS? ;
 
-ALL: 'ALL' WS? {if(false) System.out.print(getText() + " ");};
+ALL: 'ALL' WS? ;
 
-SOME: 'SOME' WS? {if(false) System.out.print(getText() + " ");};
+SOME: 'SOME' WS? ;
 
-EXISTS: 'EXISTS' WS? {if(false) System.out.print(getText() + " ");};
+EXISTS: 'EXISTS' WS? ;
 
-SQL_SMALL_RESULT: 'SQL_SMALL_RESULT' WS? {if(false) System.out.print(getText() + " ");};
+SQL_SMALL_RESULT: 'SQL_SMALL_RESULT' WS? ;
 
-CONCAT: 'CONCAT' WS? {if(false) System.out.print(getText() + " ");};
+CONCAT: 'CONCAT' WS? ;
 
-UNION: 'UNION' WS? {if(false) System.out.print(getText() + " ");};
+UNION: 'UNION' WS? ;
 
-ON: 'ON' WS? {if(false) System.out.print(getText() + " ");};
+ON: 'ON' WS? ;
 
-FROM: 'FROM' WS? {if(false) System.out.print(getText() + " ");};
+FROM: 'FROM' WS? ;
 
-JOIN: 'JOIN' WS? {if(false) System.out.print(getText() + " ");};
+JOIN: 'JOIN' WS? ;
 
-INNER_JOIN: 'INNER JOIN' WS? {if(false) System.out.print(getText() + " ");};
+INNER_JOIN: 'INNER JOIN' WS? ;
 
-LEFT: 'LEFT' WS? {if(false) System.out.print(getText() + " ");};
+LEFT: 'LEFT' WS? ;
 
-RIGHT: 'RIGHT' WS? {if(false) System.out.print(getText() + " ");};
+RIGHT: 'RIGHT' WS? ;
 
-OUTER: 'OUTER' WS? {if(false) System.out.print(getText() + " ");};
+OUTER: 'OUTER' WS? ;
 
-STRAIGHT_JOIN: 'STRAIGHT_JOIN' WS? {if(false) System.out.print(getText() + " ");};
+STRAIGHT_JOIN: 'STRAIGHT_JOIN' WS? ;
 
-WHERE: 'WHERE' WS? {if(false) System.out.print(getText() + " ");};
+WHERE: 'WHERE' WS? ;
 
-GROUP_BY: 'GROUP BY' WS? {if(false) System.out.print(getText() + " ");};
+GROUP_BY: 'GROUP BY' WS? ;
 
-HAVING: 'HAVING' WS? {if(false) System.out.print(getText() + " ");};
+HAVING: 'HAVING' WS? ;
 
-ORDER_BY: 'ORDER BY' WS? {if(false) System.out.print(getText() + " ");};
+ORDER_BY: 'ORDER BY' WS? ;
 
-SQ: 'SQ' WS? {if(false) System.out.print(getText() + " ");};
+SQ: 'SQ' WS? ;
 
-DOT: '.' WS? {if(false) System.out.print(getText() + " ");};
+DOT: '.' WS? ;
 
-COMMA: ',' WS? {if(false) System.out.print(getText() + " ");};
+COMMA: ',' WS? ;
 
-AS: 'AS' WS? {if(false) System.out.print(getText() + " ");};
+AS: 'AS' WS? ;
 
-DESC: 'DESC' WS? | 'ASC' WS? {if(false) System.out.print(getText() + " ");};
+DESC: 'DESC' WS? | 'ASC' WS? ;
 
-LIMIT: 'LIMIT' WS? {if(false) System.out.print(getText() + " ");};
+LIMIT: 'LIMIT' WS? ;
 
-OFFSET: 'OFFSET' WS? {if(false) System.out.print(getText() + " ");};
+OFFSET: 'OFFSET' WS? ;
 
-DUAL: 'DUAL' WS?  {if(false) System.out.print(getText() + " ");};
+DUAL: 'DUAL' WS?  ;
 
-TABLE_NAME: ( 'view_'?('A' | 'B' | 'C' | 'D')+ ) WS? {if(false) System.out.print(getText() + " ");};
+TABLE_NAME: ( 'view_'?('A' | 'B' | 'C' | 'D')+ ) WS? ;
 
-SUBQUERY_FIELD: 'SQ'DIGIT'_'FIELDTK WS? {if(false) System.out.print(getText() + " ");};
+SUBQUERY_FIELD: 'SQ'DIGIT'_'FIELDTK WS? ;
 
-SUBQUERY_TABLE_NAME: 'SQ'DIGIT'_'ALIAS WS? {if(false) System.out.print(getText() + " ");};
+SUBQUERY_TABLE_NAME: 'SQ'DIGIT'_'ALIAS WS? ;
 
-CHILD_SUBQUERY_TABLE_NAME: 'C_'SUBQUERY_TABLE_NAME WS? {if(false) System.out.print(getText() + " ");};
+CHILD_SUBQUERY_TABLE_NAME: 'C_'SUBQUERY_TABLE_NAME WS? ;
 
-ALIAS: 'alias' [0-9]+ WS? {if(false) System.out.print(getText() + " ");};
+ALIAS: 'alias' [0-9]+ WS? ;
 
-FIELDTK: 'field' [0-9]+ WS? {if(false) System.out.print(getText() + " ");};
+FIELDTK: 'field' [0-9]+ WS? ;
 
-PK: 'pk' WS? {if(false) System.out.print(getText() + " ");};
+PK: 'pk' WS? ;
 
-GRAVE: '`' WS? {if(false) System.out.print(getText() + " ");};
+GRAVE: '`' WS? ;
 
-COLUMN: 'col_'COL_TYPE'_'('key'|'nokey') WS? {if(false) System.out.print(getText() + " ");};
+COLUMN: 'col_'COL_TYPE'_'('key'|'nokey') WS? ;
 
-COL_TYPE: 'int' | 'varchar' {if(false) System.out.print(getText() + " ");};
+COL_TYPE: 'int' | 'varchar' ;
 
-DIGIT: [0-9][0-9]?[0-9]? WS? {if(false) System.out.print(getText() + " ");};
+DIGIT: [0-9][0-9]?[0-9]? WS? ;
 
-CHAR: '\''[a-z]'\'' WS? | '\'USA\'' WS? {if(false) System.out.print(getText() + " ");};
+CHAR: '\''[a-z]'\'' WS? | '\'USA\'' WS? ;
 
-PERCENT: '%' WS? {if(false) System.out.print(getText() + " ");};
+PERCENT: '%' WS? ;
 
-ASTERISK: '*' WS? {if(false) System.out.print(getText() + " ");};
+ASTERISK: '*' WS? ;
 
-SEMI: ';' WS? {if(false) System.out.print(getText() + " ");};
+SEMI: ';' WS? ;
 
-AGGREGATE_OP: ('COUNT' | 'SUM' | 'MIN' | 'MAX') WS? {if(false) System.out.print(getText() + " ");};
+AGGREGATE_OP: ('COUNT' | 'SUM' | 'MIN' | 'MAX') WS? ;
 
-LIKE: 'LIKE' WS? {if(false) System.out.print(getText() + " ");};
+LIKE: 'LIKE' WS? ;
 
-AND_OR: 'AND' WS? | 'OR' WS? {if(false) System.out.print(getText() + " ");};
+AND_OR: 'AND' WS? | 'OR' WS? ;
 
-IS: 'IS' WS? {if(false) System.out.print(getText() + " ");};
+IS: 'IS' WS? ;
 
-NOT: 'NOT' WS? {if(false) System.out.print(getText() + " ");};
+NOT: 'NOT' WS? ;
 
-BETWEEN: 'BETWEEN' WS? {if(false) System.out.print(getText() + " ");};
+BETWEEN: 'BETWEEN' WS? ;
 
-IN: 'IN' WS? {if(false) System.out.print(getText() + " ");};
+IN: 'IN' WS? ;
 
-NULL: 'NULL' WS? {if(false) System.out.print(getText() + " ");};
+NULL: 'NULL' WS? ;
 
-LPAREN: ( '(' | '[' | '{' ) WS? {if(false) System.out.print(getText() + " ");};
+LPAREN: ( '(' | '[' | '{' ) WS? ;
 
-RPAREN: (')' | ']' | '}') WS?  {if(false) System.out.print(getText() + " ");};
+RPAREN: (')' | ']' | '}') WS?  ;
 
-SYM: ( '.' | '`' | '_' | ';' | ',' | '\'' ) WS? {if(false) System.out.print(getText() + " ");};
+SYM: ( '.' | '`' | '_' | ';' | ',' | '\'' ) WS? ;
 
-OP: ( '+' | '-' | '*' | '/' ) WS? {if(false) System.out.print(getText() + " ");};
+OP: ( '+' | '-' | '*' | '/' ) WS? ;
 
-COMPARE_OP: ( '=' | '<' | '>' | '!=' | '<>' | '<=' | '>=' ) WS? {if(false) System.out.print(getText() + " ");};
+COMPARE_OP: ( '=' | '<' | '>' | '!=' | '<>' | '<=' | '>=' ) WS? ;
 
-WORD: ([a-zA-Z0-9] | '_')+ WS? {if(false) System.out.print(getText() + " ");};
+WORD: ([a-zA-Z0-9] | '_')+ WS? ;
 
 WS: [ \t\r\n]+ ;

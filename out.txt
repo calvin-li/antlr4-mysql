@@ -1,4 +1,4 @@
-  SELECT    MIN
+  SELECT      MIN
 (
 	    alias2 . `col_int_key`
 )
@@ -21,6 +21,8 @@ AS field1 FROM
     AS alias1 , CC AS alias2
 )
 WHERE
+alias1.`col_int_nokey` <= -12 OR alias1.`col_varchar_key` >= 'fcymz' OR alias1.`col_int_nokey` <= -67 AND alias1.`col_int_key` >= 85 OR alias1.`col_int_nokey` <> -83 AND 
+
 (
     EXISTS
     (
