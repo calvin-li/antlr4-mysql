@@ -1,14 +1,55 @@
-  SELECT alias1.`col_varchar_nokey` AS field1, alias2.`col_varchar_nokey` AS field2,      MIN
+  SELECT    MIN
 (
 	    alias2 . `col_int_key`
 )
-    AS field1 FROM
+AS field1 FROM
+(
     (
-        (  SELECT   SQ1_alias1 . * FROM ( C AS SQ1_alias1 INNER JOIN ( C AS SQ1_alias2 LEFT  JOIN C AS SQ1_alias3 ON (SQ1_alias3 . `pk` = SQ1_alias2 . `col_int_nokey`  ) ) ON (SQ1_alias3 . `col_varchar_key` = SQ1_alias2 . `col_varchar_nokey`  ) )  ) AS alias1 , (  SELECT   SQ2_alias1 . * FROM ( view_CC AS SQ2_alias1 LEFT  JOIN CC AS SQ2_alias2 ON (SQ2_alias2 . `col_varchar_key` = SQ2_alias1 . `col_varchar_key`  ) )  ) AS alias2
+        SELECT   SQ1_alias2 . * FROM
+        (
+            CC AS SQ1_alias1 INNER JOIN CC AS SQ1_alias2 ON
+            (
+                SQ1_alias2 . `col_varchar_key` =
+                SQ1_alias1 . `col_varchar_nokey`
+            )
+        )
+        WHERE
+        (
+            SQ1_alias2 . `pk` > SQ1_alias2 . `pk` AND SQ1_alias2 . `col_varchar_nokey` > 'x'
+        )
+    )
+    AS alias1 , CC AS alias2
 )
 WHERE
-alias1.`col_varchar_nokey` > vcras AND alias2.`col_int_key` != 94 AND 
-
 (
-    alias1 . `col_int_key` = 126 AND alias1 . `col_varchar_key` = 'h'
+    EXISTS
+    (
+        SELECT   SQ2_alias1 . `col_varchar_nokey` AS SQ2_field1 FROM
+        (
+	        CC AS SQ2_alias1 RIGHT  JOIN C AS SQ2_alias2 ON
+            (
+	            SQ2_alias2 . `col_varchar_key` =
+	            SQ2_alias1 . `col_varchar_key`
+            )
+        )
+        WHERE SQ2_alias1 . `col_varchar_nokey` = alias1 . `col_varchar_nokey` OR SQ2_alias2 . `col_varchar_key` < alias2 . `col_varchar_key`
+    )
 )
+AND
+(
+    alias1 . `col_int_key` = 326 AND alias1 . `col_varchar_key` = 'h'
+)
+HAVING
+(
+    3, 3
+)
+IN
+(
+    SELECT   SQ3_alias1 . `col_int_key` AS SQ3_field1 , SQ3_alias1 . `col_int_nokey` AS SQ3_field2 FROM C AS SQ3_alias1 WHERE
+    (
+        SQ3_alias1 . `col_varchar_key` <= SQ3_alias1 . `col_varchar_nokey` AND  SQ3_alias1 . `col_varchar_nokey` = ALL
+        (
+	        SELECT 8 UNION ALL SELECT 3
+        )
+    )
+)<EOF>

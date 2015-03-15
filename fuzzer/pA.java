@@ -1,4 +1,4 @@
-package gen;
+package fuzzer;
 
 import java.util.Random;
 import java.io.*;
