@@ -25,6 +25,6 @@ public class Main {
                 new mysql_expressionsParser(tokens);
         ParserRuleContext tree = parser.query(); // parse
         Visitor visitor = new Visitor();
-        System.out.println("Result: " + visitor.visit(tree));
+        visitor.visit(tree);
     }
 }

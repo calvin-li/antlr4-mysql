@@ -1,0 +1,373 @@
+-- MySQL dump 10.13  Distrib 5.6.19, for debian-linux-gnu (x86_64)
+--
+-- Host: 127.0.0.1    Database: test
+-- ------------------------------------------------------
+-- Server version	5.6.22-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `A`
+--
+
+DROP TABLE IF EXISTS `A`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `A` (
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_int_key` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_varchar_key` (`col_varchar_key`),
+  KEY `col_int_key` (`col_int_key`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `A`
+--
+
+LOCK TABLES `A` WRITE;
+/*!40000 ALTER TABLE `A` DISABLE KEYS */;
+/*!40000 ALTER TABLE `A` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `B`
+--
+
+DROP TABLE IF EXISTS `B`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `B` (
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_int_key` int(11) DEFAULT NULL,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_int_key` (`col_int_key`),
+  KEY `col_varchar_key` (`col_varchar_key`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `B`
+--
+
+LOCK TABLES `B` WRITE;
+/*!40000 ALTER TABLE `B` DISABLE KEYS */;
+/*!40000 ALTER TABLE `B` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BB`
+--
+
+DROP TABLE IF EXISTS `BB`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BB` (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `col_int_key` int(11) DEFAULT NULL,
+  `col_int_nokey` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_varchar_key` (`col_varchar_key`),
+  KEY `col_int_key` (`col_int_key`)
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BB`
+--
+
+LOCK TABLES `BB` WRITE;
+/*!40000 ALTER TABLE `BB` DISABLE KEYS */;
+INSERT INTO `BB` VALUES (1,'t','w',NULL,NULL),(2,'h','o',-795934720,9),(3,'e','s',NULL,-628359168),(4,'a','t',-1076690944,7),(5,'t','o',NULL,-1583284224),(6,'d','t',183173120,-850395136),(7,'l','i',NULL,6),(8,'a','t',2,1),(9,'m','e',2,8),(10,'f','q',1,NULL),(11,'i','d',1,8),(12,'u','t',-410058752,195231744),(13,'d','s',4,-970457088),(14,'s','l',9,-412811264),(15,'g','a',0,-1147731968),(16,'d','r',1,NULL),(17,'k','i',2137456640,1862205440),(18,'s','j',NULL,9),(19,'m','i',65142784,NULL),(20,'m','y',1,NULL),(21,'u','i',-654311424,NULL),(22,'y','o',NULL,-391118848);
+/*!40000 ALTER TABLE `BB` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `C`
+--
+
+DROP TABLE IF EXISTS `C`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `C` (
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  `col_int_key` int(11) DEFAULT NULL,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`pk`),
+  KEY `col_varchar_key` (`col_varchar_key`),
+  KEY `col_int_key` (`col_int_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `C`
+--
+
+LOCK TABLES `C` WRITE;
+/*!40000 ALTER TABLE `C` DISABLE KEYS */;
+INSERT INTO `C` VALUES (NULL,'h',6,'k',1),(NULL,'n',0,'j',2),(-1968373760,'m',NULL,'h',3),(NULL,'l',-180486144,'c',4),(-665321472,'c',1230307328,'d',5),(NULL,'s',8,'t',6),(NULL,'r',NULL,'t',7),(2,'p',NULL,'z',8),(NULL,'x',NULL,'w',9),(0,'n',0,'u',10),(-1089470464,'b',2,'t',11),(NULL,'y',-1576468480,'j',12),(1,'j',9,'a',13),(NULL,'p',-589692928,'v',14),(1590362112,'b',-1992163328,'i',15),(NULL,'f',226557952,'I',16),(-618856448,'s',1607860224,'v',17),(1605500928,'k',-1553399808,'y',18),(NULL,'s',NULL,'h',19),(-204406784,'m',9,'a',20),(1,'y',-897712128,'l',21),(NULL,'u',7,'k',22);
+/*!40000 ALTER TABLE `C` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CC`
+--
+
+DROP TABLE IF EXISTS `CC`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CC` (
+  `col_int_key` int(11) DEFAULT NULL,
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_int_key` (`col_int_key`),
+  KEY `col_varchar_key` (`col_varchar_key`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CC`
+--
+
+LOCK TABLES `CC` WRITE;
+/*!40000 ALTER TABLE `CC` DISABLE KEYS */;
+INSERT INTO `CC` VALUES (NULL,5,'g',1,'c'),(NULL,6,'t',2,'b'),(6,-464715776,'b',3,'a'),(NULL,NULL,'w',4,'m'),(NULL,NULL,'h',5,'i'),(NULL,NULL,'q',6,'u'),(5,268566528,'k',7,'m'),(-2044329984,6,'t',8,'h'),(NULL,NULL,'k',9,'h'),(-1463025664,7,'o',10,'e'),(NULL,0,'j',11,'i'),(NULL,6,'e',12,'s'),(-2049966080,4,'b',13,'y'),(3,NULL,'l',14,'f'),(8,259391488,'w',15,'v'),(7,9,'s',16,'l'),(7,-1131610112,'g',17,'f'),(NULL,1843003392,'a',18,'i'),(NULL,7,'g',19,'o'),(0,-1009057792,'g',20,'k'),(NULL,28573696,'o',21,'c'),(6,8,'I',22,'w'),(1,NULL,'m',23,'e');
+/*!40000 ALTER TABLE `CC` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `D`
+--
+
+DROP TABLE IF EXISTS `D`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `D` (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_int_key` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_varchar_key` (`col_varchar_key`),
+  KEY `col_int_key` (`col_int_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `D`
+--
+
+LOCK TABLES `D` WRITE;
+/*!40000 ALTER TABLE `D` DISABLE KEYS */;
+INSERT INTO `D` VALUES (1,'o','p',NULL,7),(2,'c','j',-185204736,-1634271232),(3,'p','o',8,NULL),(4,'f','m',791281664,NULL),(5,'a','a',170262528,316604416),(6,'f','y',930938880,NULL),(7,'v','e',NULL,NULL),(8,'v','u',9,-1667563520),(9,'q','v',NULL,1542324224),(10,'a','y',4,8),(11,'t','g',4,NULL),(12,'j','h',1394016256,NULL),(13,'j','n',NULL,5),(14,'s','m',-983236608,2),(15,'c','s',NULL,NULL),(16,'d','w',7,9),(17,'e','u',3,NULL),(18,'c','t',1,NULL),(19,'s','v',4,1299382272),(20,'q','h',-754122752,4),(21,'b','o',0,806813696),(22,'l','h',NULL,825163776),(23,'h','l',NULL,-1207828480);
+/*!40000 ALTER TABLE `D` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `table100_innodb_int_autoinc`
+--
+
+DROP TABLE IF EXISTS `table100_innodb_int_autoinc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `table100_innodb_int_autoinc` (
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `col_int_key` int(11) DEFAULT NULL,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`pk`),
+  KEY `col_int_key` (`col_int_key`),
+  KEY `col_varchar_key` (`col_varchar_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `table100_innodb_int_autoinc`
+--
+
+LOCK TABLES `table100_innodb_int_autoinc` WRITE;
+/*!40000 ALTER TABLE `table100_innodb_int_autoinc` DISABLE KEYS */;
+INSERT INTO `table100_innodb_int_autoinc` VALUES (NULL,'m',NULL,'u',1),(1208352768,'n',978780160,'t',2),(9,'o',2,'p',3),(549322752,'k',7,'p',4),(1615593472,'f',-1336606720,'d',5),(-301989888,'m',-262209536,'u',6),(724500480,'i',4,'r',7),(NULL,'g',3,'i',8),(-634519552,'z',NULL,'d',9),(8,'s',NULL,'l',10),(NULL,'m',7,'h',11),(234881024,'a',-829816832,'y',12),(5,'p',2117206016,'h',13),(NULL,'p',NULL,'b',14),(1434124288,'t',NULL,'s',15),(-1128136704,'t',-758710272,'h',16),(407175168,'s',9,'y',17),(200212480,'d',785645568,'u',18),(NULL,'z',3,'h',19),(-1629945856,'h',NULL,'g',20),(NULL,'w',0,'s',21),(1941635072,'i',4,'c',22),(4,'a',-610992128,'y',23),(NULL,'u',2,'c',24),(NULL,'q',530907136,'h',25),(-771293184,'n',-1486618624,'a',26),(1895301120,'s',-1725825024,'h',27),(1047199744,'o',NULL,'a',28),(3,'o',1461452800,'v',29),(650182656,'e',NULL,'m',30),(NULL,'m',NULL,'u',31),(1056374784,'t',NULL,'m',32),(NULL,'e',7,'q',33),(NULL,'t',NULL,'y',34),(569180160,'v',NULL,'j',35),(2063204352,'j',1805975552,'j',36),(NULL,'c',5,'b',37),(NULL,'g',7864320,'x',38),(-1315897344,'l',NULL,'h',39),(7,'y',2424832,'g',40),(NULL,'s',-234618880,'b',41),(NULL,'w',2,'u',42),(NULL,'o',NULL,'l',43),(NULL,'l',1,'l',44),(-1977155584,'r',NULL,'j',45),(8,'d',NULL,'n',46),(-1516044288,'m',403898368,'g',47),(NULL,'p',5,'b',48),(NULL,'k',9,'n',49),(NULL,'s',2,'a',50),(NULL,'i',928514048,'w',51),(-1870331904,'s',NULL,'r',52),(1362100224,'s',NULL,'w',53),(2,'x',NULL,'w',54),(-991297536,'u',6,'t',55),(NULL,'n',6,'s',56),(NULL,'o',NULL,'d',57),(-342622208,'s',-508821504,'w',58),(0,'u',1,'i',59),(2045050880,'r',1626865664,'o',60),(-729808896,'b',-2106720256,'l',61),(NULL,'h',NULL,'w',62),(-1561264128,'p',-14090240,'u',63),(21168128,'t',NULL,'o',64),(1,'w',1975320576,'j',65),(1,'o',0,'r',66),(NULL,'x',1822031872,'e',67),(5,'w',6,'h',68),(NULL,'d',4,'n',69),(NULL,'o',5,'c',70),(478347264,'v',838598656,'z',71),(NULL,'w',8,'r',72),(2,'h',1471807488,'s',73),(4,'t',1,'h',74),(NULL,'c',NULL,'h',75),(3,'a',NULL,'x',76),(NULL,'s',219348992,'j',77),(3,'z',NULL,'t',78),(17235968,'s',2,'l',79),(-872939520,'c',6,'x',80),(8,'i',NULL,'w',81),(4,'h',-1234436096,'t',82),(2,'x',5,'u',83),(4,'j',9,'l',84),(-2058092544,'a',-1542324224,'u',85),(9,'s',4,'u',86),(NULL,'u',1591148544,'f',87),(NULL,'z',NULL,'w',88),(1607073792,'h',NULL,'e',89),(1,'l',5,'s',90),(-1487208448,'p',NULL,'j',91),(4,'d',6,'z',92),(NULL,'t',NULL,'p',93),(NULL,'i',NULL,'v',94),(3,'j',NULL,'c',95),(1457717248,'h',4,'s',96),(-1246035968,'f',NULL,'f',97),(8,'k',8,'p',98),(NULL,'x',2,'t',99),(2066481152,'a',NULL,'i',100);
+/*!40000 ALTER TABLE `table100_innodb_int_autoinc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `table100_myisam_int_autoinc`
+--
+
+DROP TABLE IF EXISTS `table100_myisam_int_autoinc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `table100_myisam_int_autoinc` (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_int_key` int(11) DEFAULT NULL,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_int_key` (`col_int_key`),
+  KEY `col_varchar_key` (`col_varchar_key`)
+) ENGINE=MyISAM AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `table100_myisam_int_autoinc`
+--
+
+LOCK TABLES `table100_myisam_int_autoinc` WRITE;
+/*!40000 ALTER TABLE `table100_myisam_int_autoinc` DISABLE KEYS */;
+INSERT INTO `table100_myisam_int_autoinc` VALUES (1,NULL,'g',-1213857792,'h'),(2,1,'g',NULL,'u'),(3,8,'k',4,'q'),(4,946929664,'c',1630797824,'m'),(5,NULL,'c',-877330432,'v'),(6,1,'i',3,'d'),(7,1456013312,'b',9,'y'),(8,NULL,'w',8,'c'),(9,NULL,'c',1,'p'),(10,7,'t',NULL,'c'),(11,-1895301120,'c',NULL,'i'),(12,-887291904,'d',3,'i'),(13,2,'k',NULL,'f'),(14,3,'t',3,'n'),(15,NULL,'p',NULL,'x'),(16,6,'y',961740800,'w'),(17,9,'i',NULL,'b'),(18,-1274347520,'l',0,'d'),(19,-240582656,'m',-2062876672,'v'),(20,-1464729600,'n',1,'a'),(21,-2131296256,'b',-707002368,'t'),(22,NULL,'u',-1485570048,'n'),(23,NULL,'n',8,'o'),(24,2,'m',8,'x'),(25,NULL,'w',NULL,'i'),(26,562561024,'c',NULL,'i'),(27,NULL,'c',5,'f'),(28,3,'t',1,'e'),(29,1590493184,'m',7,'d'),(30,NULL,'x',0,'c'),(31,NULL,'i',8,'q'),(32,NULL,'y',-1044774912,'c'),(33,-1437073408,'i',-1373437952,'a'),(34,1481900032,'h',1022689280,'k'),(35,0,'v',7,'j'),(36,1,'v',7,'s'),(37,NULL,'j',1497169920,'h'),(38,-1982595072,'y',1,'x'),(39,-438304768,'s',2,'t'),(40,NULL,'p',-309395456,'m'),(41,-1776091136,'g',NULL,'a'),(42,3,'t',8,'y'),(43,-1336541184,'f',NULL,'b'),(44,-1105592320,'z',5,'e'),(45,0,'f',1290141696,'o'),(46,1231945728,'t',NULL,'a'),(47,747110400,'a',2,'p'),(48,-813432832,'j',9,'I'),(49,0,'y',2,'w'),(50,698089472,'d',3,'r'),(51,815464448,'a',1,'g'),(52,NULL,'e',-580583424,'h'),(53,NULL,'o',NULL,'z'),(54,-1606483968,'w',NULL,'x'),(55,8,'s',NULL,'n'),(56,747438080,'t',NULL,'c'),(57,-966066176,'y',NULL,'b'),(58,NULL,'y',NULL,'j'),(59,565575680,'w',NULL,'b'),(60,0,'t',33095680,'c'),(61,-1947402240,'I',NULL,'h'),(62,NULL,'j',NULL,'x'),(63,8,'w',NULL,'t'),(64,5,'w',NULL,'d'),(65,-588382208,'t',NULL,'f'),(66,-878313472,'z',1585315840,'x'),(67,NULL,'s',3,'g'),(68,7,'c',4,'t'),(69,NULL,'i',-491782144,'t'),(70,NULL,'v',NULL,'v'),(71,7,'l',4,'t'),(72,NULL,'c',4,'e'),(73,NULL,'c',9,'a'),(74,-867368960,'a',2,'u'),(75,281477120,'d',655032320,'q'),(76,-1988362240,'e',898105344,'i'),(77,1600192512,'x',7,'z'),(78,6,'n',7,'t'),(79,NULL,'s',-2103771136,'c'),(80,NULL,'r',0,'g'),(81,NULL,'m',-2032074752,'h'),(82,1784610816,'n',212205568,'b'),(83,0,'g',1,'z'),(84,-360775680,'h',-1188888576,'l'),(85,3,'r',NULL,'b'),(86,0,'u',4,'b'),(87,0,'l',NULL,'e'),(88,NULL,'w',0,'p'),(89,NULL,'r',NULL,'l'),(90,1129709568,'d',NULL,'u'),(91,9,'i',NULL,'i'),(92,NULL,'t',9,'j'),(93,932052992,'a',1020788736,'k'),(94,3,'r',NULL,'w'),(95,NULL,'l',2,'b'),(96,6,'l',NULL,'w'),(97,NULL,'p',5,'q'),(98,-42532864,'i',295763968,'b'),(99,NULL,'j',1,'h'),(100,NULL,'x',NULL,'h');
+/*!40000 ALTER TABLE `table100_myisam_int_autoinc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `table24_innodb_int_autoinc`
+--
+
+DROP TABLE IF EXISTS `table24_innodb_int_autoinc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `table24_innodb_int_autoinc` (
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `col_int_key` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_varchar_key` (`col_varchar_key`),
+  KEY `col_int_key` (`col_int_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `table24_innodb_int_autoinc`
+--
+
+LOCK TABLES `table24_innodb_int_autoinc` WRITE;
+/*!40000 ALTER TABLE `table24_innodb_int_autoinc` DISABLE KEYS */;
+INSERT INTO `table24_innodb_int_autoinc` VALUES ('h',1,NULL,'o',-2034696192),('w',2,NULL,'i',NULL),('t',3,8,'y',NULL),('g',4,NULL,'z',6),('o',5,7,'g',NULL),('k',6,7,'x',3),('k',7,-1321205760,'t',NULL),('j',8,1074462720,'z',-1392181248),('b',9,1284374528,'l',NULL),('y',10,6,'o',4),('w',11,-507314176,'h',NULL),('k',12,-636485632,'h',-1416953856),('j',13,6,'y',NULL),('i',14,3,'r',NULL),('j',15,6,'h',3),('k',16,-1863843840,'v',796459008),('m',17,-2060517376,'e',NULL),('y',18,NULL,'d',1),('c',19,-446693376,'f',NULL),('i',20,-1316356096,'q',4),('o',21,NULL,'m',-1483800576),('c',22,22216704,'k',1427111936),('n',23,NULL,'t',-437387264),('m',24,6,'b',-2025979904);
+/*!40000 ALTER TABLE `table24_innodb_int_autoinc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `table24_myisam_int_autoinc`
+--
+
+DROP TABLE IF EXISTS `table24_myisam_int_autoinc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `table24_myisam_int_autoinc` (
+  `col_int_key` int(11) DEFAULT NULL,
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_int_key` (`col_int_key`),
+  KEY `col_varchar_key` (`col_varchar_key`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `table24_myisam_int_autoinc`
+--
+
+LOCK TABLES `table24_myisam_int_autoinc` WRITE;
+/*!40000 ALTER TABLE `table24_myisam_int_autoinc` DISABLE KEYS */;
+INSERT INTO `table24_myisam_int_autoinc` VALUES (-613154816,1,'t',-760676352,'d'),(NULL,2,'h',9,'r'),(NULL,3,'x',772210688,'o'),(NULL,4,'v',-1116995584,'w'),(NULL,5,'b',0,'a'),(-858259456,6,'m',9,'I'),(NULL,7,'z',NULL,'h'),(NULL,8,'o',NULL,'o'),(-1414135808,9,'k',NULL,'b'),(799080448,10,'q',NULL,'w'),(2,11,'r',1916665856,'c'),(NULL,12,'a',1920008192,'d'),(1184301056,13,'w',-1265565696,'c'),(9,14,'t',NULL,'k'),(3,15,'a',NULL,'j'),(636289024,16,'w',NULL,'I'),(3,17,'e',1995243520,'n'),(NULL,18,'c',4,'g'),(1417740288,19,'t',NULL,'t'),(NULL,20,'t',-839712768,'d'),(NULL,21,'h',3,'y'),(NULL,22,'h',6,'l'),(-193265664,23,'u',NULL,'p'),(951910400,24,'o',107544576,'o');
+/*!40000 ALTER TABLE `table24_myisam_int_autoinc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `table25_innodb_int_autoinc`
+--
+
+DROP TABLE IF EXISTS `table25_innodb_int_autoinc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `table25_innodb_int_autoinc` (
+  `col_int_key` int(11) DEFAULT NULL,
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_int_key` (`col_int_key`),
+  KEY `col_varchar_key` (`col_varchar_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `table25_innodb_int_autoinc`
+--
+
+LOCK TABLES `table25_innodb_int_autoinc` WRITE;
+/*!40000 ALTER TABLE `table25_innodb_int_autoinc` DISABLE KEYS */;
+INSERT INTO `table25_innodb_int_autoinc` VALUES (NULL,1,'f',5,'r'),(NULL,2,'s',NULL,'r'),(0,3,'l',0,'j'),(NULL,4,'p',-433520640,'d'),(NULL,5,'w',NULL,'l'),(0,6,'h',9,'u'),(9,7,'a',NULL,'h'),(7,8,'c',712835072,'f'),(NULL,9,'x',8,'v'),(NULL,10,'a',2,'h'),(-1192493056,11,'e',NULL,'j'),(-1583022080,12,'h',1,'b'),(NULL,13,'w',8,'e'),(NULL,14,'o',2026766336,'x'),(1229586432,15,'d',-1440022528,'o'),(NULL,16,'s',7,'u'),(4,17,'w',0,'q'),(NULL,18,'s',1526923264,'y'),(1481768960,19,'y',-2065956864,'g'),(302710784,20,'d',1,'x'),(-1706098688,21,'q',-1816788992,'c'),(668073984,22,'b',-1162412032,'x'),(NULL,23,'a',NULL,'m'),(NULL,24,'n',1170145280,'v'),(5,25,'l',1,'b');
+/*!40000 ALTER TABLE `table25_innodb_int_autoinc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `table25_myisam_int_autoinc`
+--
+
+DROP TABLE IF EXISTS `table25_myisam_int_autoinc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `table25_myisam_int_autoinc` (
+  `col_int_nokey` int(11) DEFAULT NULL,
+  `col_varchar_key` varchar(1) DEFAULT NULL,
+  `col_int_key` int(11) DEFAULT NULL,
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `col_varchar_nokey` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`pk`),
+  KEY `col_varchar_key` (`col_varchar_key`),
+  KEY `col_int_key` (`col_int_key`)
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `table25_myisam_int_autoinc`
+--
+
+LOCK TABLES `table25_myisam_int_autoinc` WRITE;
+/*!40000 ALTER TABLE `table25_myisam_int_autoinc` DISABLE KEYS */;
+INSERT INTO `table25_myisam_int_autoinc` VALUES (NULL,'r',-1179058176,1,'m'),(-69206016,'s',3,2,'p'),(1125187584,'t',-1574699008,3,'a'),(NULL,'a',NULL,4,'f'),(NULL,'p',NULL,5,'o'),(1567621120,'x',3,6,'a'),(1279852544,'w',326107136,7,'c'),(NULL,'e',0,8,'r'),(NULL,'y',1126301696,9,'w'),(NULL,'j',NULL,10,'v'),(8,'q',5,11,'g'),(1886715904,'g',5,12,'h'),(NULL,'c',7,13,'t'),(NULL,'l',5,14,'s'),(7,'b',2084831232,15,'s'),(-1156644864,'c',1,16,'z'),(542703616,'I',-153550848,17,'s'),(8,'h',NULL,18,'v'),(1395458048,'t',9,19,'a'),(772997120,'s',0,20,'q'),(NULL,'u',1076690944,21,'r'),(NULL,'p',NULL,22,'m'),(NULL,'u',NULL,23,'j'),(NULL,'d',1895497728,24,'l'),(NULL,'q',1,25,'h');
+/*!40000 ALTER TABLE `table25_myisam_int_autoinc` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-03-16 16:43:15

@@ -1,3 +1,5 @@
 gen
 *.iml
 .idea
+logs
+errors

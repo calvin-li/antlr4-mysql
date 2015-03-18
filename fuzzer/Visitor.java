@@ -13,7 +13,7 @@ public class Visitor extends mysql_expressionsBaseVisitor<Integer> {
     private static final String[] is_key = {"key", "nokey"};
     private static final String[] and_or = {"AND", "OR"};
     private static final String[] compare =
-            {"=", "<", ">", "!=", "<>", "<=", ">="};
+            {"<", ">", "<=", ">="};
     private static final Random rng = new Random();
 
     public static HashMap<String, Integer> index =
@@ -66,6 +66,7 @@ public class Visitor extends mysql_expressionsBaseVisitor<Integer> {
             String type = random(types);
             String key = random(is_key);
             String conj = random(and_or);
+			conj = "OR";
             String op = random(compare);
             String chars = "abcdefghijklmnopqrstuvwxyz";
             String value = "";
@@ -89,6 +90,7 @@ public class Visitor extends mysql_expressionsBaseVisitor<Integer> {
         where_index +=
                 select_more.length() + "WHERE ".length();
         query = insert(query, where_more, where_index);
+		query = query.replace("<EOF>", "");
 
         printToFile("out.txt", query);
 
