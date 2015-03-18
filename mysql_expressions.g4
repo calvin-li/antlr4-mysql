@@ -50,7 +50,10 @@ select_subquery_body_disabled:
     LPAREN SELECT value UNION (ALL | DISTINCT)? LPAREN value LIMIT '1' AS field ;
 
 join_list:
-    LPAREN new_table (COMMA new_table)+ RPAREN;
+    LPAREN new_table join_type new_table ON LPAREN join_condition_item RPAREN RPAREN
+    | LPAREN join_type LPAREN LPAREN new_table join_type new_table ON LPAREN join_condition_item RPAREN RPAREN RPAREN ON LPAREN join_condition_item RPAREN RPAREN
+    | LPAREN new_table (COMMA new_table)+ RPAREN
+    | LPAREN new_table (COMMA new_table)+ RPAREN;
 
 join_list_disabled:
     new_table 
@@ -125,7 +128,7 @@ correlated_subquery:
     LPAREN SELECT DISTINCT? SQL_SMALL_RESULT? aggregate? subquery_table DOT field AS SUBQUERY_FIELD FROM subquery_join_list WHERE correlated_subquery_where_list RPAREN ;
 
 single_subquery:
-    LPAREN SELECT DISTINCT? SQL_SMALL_RESULT? aggregate? subquery_table DOT field RPAREN AS field subquery_body (subquery_group_by subquery_having)? RPAREN
+    LPAREN SELECT DISTINCT? SQL_SMALL_RESULT? aggregate? subquery_table DOT field AS SUBQUERY_FIELD subquery_body (subquery_group_by subquery_having)? RPAREN
     | LPAREN SELECT value FROM DUAL RPAREN
     | SELECT value ;
 
