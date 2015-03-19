@@ -1,3 +1,0 @@
-  SELECT alias1.`col_varchar_nokey` AS field2,      alias2 . `pk` AS field1 FROM ( C AS alias1 INNER JOIN (  SELECT   SQ1_alias1 . * FROM ( BB AS SQ1_alias1 , B AS SQ1_alias2 )  ) AS alias2 ON (alias2 . `col_int_key` = alias1 . `pk`  ) ) WHERE
-alias1.`col_int_key` <= -83 OR alias1.`col_int_nokey` >= 71 OR 
-  EXISTS ( ( SELECT DISTINCT  SQ2_alias2 . `col_varchar_key` <missing RPAREN>AS SQ2_field1 FROM ( CC AS SQ2_alias1 , CC AS SQ2_alias2 )   ) )  HAVING field1 < 'y' ORDER BY CONCAT( alias1 . `col_varchar_nokey`, alias2 . `col_varchar_nokey` );
