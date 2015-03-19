@@ -11,7 +11,7 @@ query
         ArrayList<Integer> tables = new ArrayList<Integer>(),
         ArrayList<String> select_fields = new ArrayList<String>(),
 ]:
-    WS? explain? SELECT DISTINCT? STRAIGHT_JOIN? SQL_SMALL_RESULT? (simple_select_list | {fuzzer.Visitor.index.put("AGG", $text.length());} aggregate_select_list)
+    WS? explain? SELECT DISTINCT? STRAIGHT_JOIN? SQL_SMALL_RESULT? (select_list | simple_select_list | {fuzzer.Visitor.index.put("AGG", $text.length());} aggregate_select_list)
     FROM join_list {fuzzer.Visitor.index.put("WHERE", $text.length());} where_clause group_by_clause? having_clause order_by_clause? SEMI? EOF?
 ;
 
