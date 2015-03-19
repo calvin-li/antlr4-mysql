@@ -623,7 +623,6 @@ new_select_item:
 	nonaggregate_select_item |
 	nonaggregate_select_item |
 	aggregate_select_item |
-        combo_select_item |
         nonaggregate_select_item |
 	nonaggregate_select_item |
 	aggregate_select_item |
