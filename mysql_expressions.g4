@@ -79,6 +79,7 @@ generic_where_list:
 where_item:
     where_subquery
     | table DOT field COMPARE_OP table DOT field
+    | table DOT field COMPARE_OP value
     | table DOT field IS NOT? NULL;
 
 ranged_where_list:
@@ -101,7 +102,7 @@ general_subquery:
     table DOT field COMPARE_OP single_subquery
     | LPAREN table DOT field COMMA table DOT field RPAREN NOT? IN double_subquery
     | table DOT field membership_operator single_subquery
-    | LPAREN value COMMA value RPAREN NOT? IN double_subquery
+    | LPAREN? value COMMA value RPAREN? NOT? IN double_subquery
     | table DOT field membership_operator single_union_subquery ;
 
 general_subquery_union_test_disabled:
@@ -127,7 +128,7 @@ correlated_subquery:
     LPAREN SELECT DISTINCT? SQL_SMALL_RESULT? aggregate? subquery_table DOT field AS SUBQUERY_FIELD FROM subquery_join_list WHERE correlated_subquery_where_list RPAREN ;
 
 single_subquery:
-    LPAREN SELECT DISTINCT? SQL_SMALL_RESULT? aggregate? subquery_table DOT field AS SUBQUERY_FIELD subquery_body (subquery_group_by subquery_having)? RPAREN
+    LPAREN LPAREN? SELECT DISTINCT? SQL_SMALL_RESULT? aggregate? subquery_table DOT field RPAREN? AS SUBQUERY_FIELD subquery_body (subquery_group_by subquery_having)? RPAREN
     | LPAREN SELECT value FROM DUAL RPAREN
     | SELECT value ;
 
@@ -194,8 +195,8 @@ order_by_list:
     order_by_item (COMMA order_by_item)* ;
 
 order_by_item:
-    ALIAS DOT field (COMMA table DOT field)? DESC
-    | field DESC
+    ALIAS DOT field (COMMA table DOT field)? DESC?
+    | field DESC?
     | CONCAT LPAREN table DOT field COMMA table DOT field RPAREN ;
 
 total_order_by:

@@ -215,6 +215,7 @@ int_single_value_subquery:
       subquery_body ) |
     ( SELECT distinct select_option aggregate subquery_table_one_two . int_field_name ) AS { "SQ".$subquery_idx."_field1" } 
       subquery_body ) |
+      subquery_body ) |
     ( SELECT _digit FROM DUAL ) ;
 
 int_single_member_subquery:
