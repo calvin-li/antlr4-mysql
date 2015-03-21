@@ -51,7 +51,7 @@ select_subquery_body_disabled:
 
 join_list:
     LPAREN new_table join_type new_table ON LPAREN join_condition_item RPAREN RPAREN
-    | LPAREN join_type LPAREN LPAREN new_table join_type new_table ON LPAREN join_condition_item RPAREN RPAREN RPAREN ON LPAREN join_condition_item RPAREN RPAREN
+    | LPAREN new_table join_type LPAREN LPAREN new_table join_type new_table ON LPAREN join_condition_item RPAREN RPAREN RPAREN ON LPAREN join_condition_item RPAREN RPAREN
     | LPAREN new_table (COMMA new_table)+ RPAREN;
 
 join_list_disabled:
