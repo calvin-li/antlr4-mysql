@@ -47,7 +47,7 @@ select_subquery:
     (single_subquery | int_scalar_subquery) AS field ;
 
 select_subquery_body_disabled:
-    LPAREN SELECT value UNION (ALL | DISTINCT)? LPAREN value LIMIT '1' AS field ;
+    LPAREN SELECT value UNION (ALL | DISTINCT)? LPAREN value LIMIT DIGIT AS field ;
 
 join_list:
     LPAREN new_table join_type new_table ON LPAREN join_condition_item RPAREN RPAREN
@@ -103,7 +103,8 @@ general_subquery:
     | LPAREN table DOT field COMMA table DOT field RPAREN NOT? IN double_subquery
     | table DOT field membership_operator single_subquery
     | LPAREN? value COMMA value RPAREN? NOT? IN double_subquery
-    | table DOT field membership_operator single_union_subquery ;
+    | table DOT field membership_operator single_union_subquery
+    ;
 
 general_subquery_union_test_disabled:
     (table | subquery_table) DOT field COMPARE_OP all_any single_union_subquery_disabled ;
