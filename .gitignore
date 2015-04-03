@@ -3,5 +3,6 @@ out.txt
 gen
 *.iml
 .idea
-logs
-errors
+logs*
+errors*
+queries*

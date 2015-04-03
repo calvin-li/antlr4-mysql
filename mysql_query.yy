@@ -768,7 +768,7 @@ value:
 _table:
      A | B | C | BB | CC | B | C | BB | CC | 
      CC | CC | CC | CC | CC |
-     C | C | C | C | C | D |  view ;
+     C | C | C | C | D ;
 
 ################################################################################
 # Add a possibility for 'view' to occur at the end of the previous '_table' rule

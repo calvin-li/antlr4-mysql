@@ -1,13 +1,14 @@
+cp mysql_query.yy ../randgen/grammars/
 cd ~/project/randgen
 perl ~/project/randgen/gensql.pl \
 	--queries=1 \
 	--seed=$1 \
 	--dsn=dbi:mysql:host=127.0.0.1:port=19300:user=root:database=test \
 	--grammar=grammars/mysql_query.yy	\
-| tail --lines=1 > ~/project/antlr4/query.txt
+| tail --lines=1 > ~/project/antlr4/queries/$1.txt
 
 cd ~/project/antlr4
 
-java fuzzer.Main query.txt
+java fuzzer.Main queries/$1.txt
 
 mysql -h 127.0.0.1 -P 19300 -u root -D test < out.txt > logs/$1.txt

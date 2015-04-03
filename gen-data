@@ -1,0 +1,1 @@
+perl gendata.pl --spec=mysql_query.zz --dsn=dbi:mysql:host=127.0.0.1:port=19300:user=root:database=test
