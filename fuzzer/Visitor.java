@@ -92,7 +92,7 @@ public class Visitor extends mysql_expressionsBaseVisitor<Integer> {
         query = insert(query, where_more, where_index);
 		query = query.replace("<EOF>", "");
 
-        printToFile("out.txt", query);
+        printToFile("out/" + Main.seed, query);
 
         return 0;
     }

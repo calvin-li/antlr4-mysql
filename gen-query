@@ -5,10 +5,12 @@ perl ~/project/randgen/gensql.pl \
 	--seed=$1 \
 	--dsn=dbi:mysql:host=127.0.0.1:port=19300:user=root:database=test \
 	--grammar=grammars/mysql_query.yy	\
-| tail --lines=1 > ~/project/antlr4/queries/$1.txt
+| tail --lines=1 > ~/project/antlr4/queries/$1
 
 cd ~/project/antlr4
 
-java fuzzer.Main queries/$1.txt
+java fuzzer.Main $1 queries/$1
 
-mysql -h 127.0.0.1 -P 19300 -u root -D test < out.txt > logs/$1.txt
+mysql -h 127.0.0.1 -P 19300 -u root -D test < out/$1 > mysql_logs/$1 2>&1
+sqlite3 db.sqlite < out/$1 > sqlite_logs/$1 2>&1
+diff mysql_logs/$1 sqlite_logs/$1 > diff/$1

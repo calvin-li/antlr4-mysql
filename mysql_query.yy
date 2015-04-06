@@ -1,56 +1,3 @@
-# Copyright (c) 2008, 2011 Oracle and/or its affiliates. All rights reserved.
-# Use is subject to license terms.
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; version 2 of the License.
-#
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
-# USA
-
-# **NOTE** Joins for this grammar are currently not working as intended.
-# For example, if we have tables 1, 2, and 3, we end up with ON conditions that 
-# only involve tables 2 and 3.
-# This will be fixed, but initial attempts at altering this had a negative 
-# impact on the coverage the test was providing.  To be fixed when scheduling 
-# permits.  We are still seeing significant coverage with the grammar as-is.
-
-################################################################################
-# optimizer_subquery.yy:  Random Query Generator grammar for testing subquery  #
-#                    optimizations.  This grammar *should* hit the             # 
-#                    optimizations listed here:                                #
-#                    https://inside.mysql.com/wiki/Optimizer_grammar_worksheet #
-# see:  WL#5006 Random Query Generator testing of Azalea Optimizer- subqueries #
-#       https://intranet.mysql.com/worklog/QA-Sprint/?tid=5006                 #
-#                                                                              #
-# recommendations:                                                             #
-#       queries: 10k+.  We can see a lot with lower values, but over 10k is    #
-#                best.  The intersect optimization happens with low frequency  #
-#                so larger values help us to hit it at least some of the time  #
-#       engines: MyISAM *and* Innodb.  Certain optimizations are only hit with #
-#                one engine or another and we should use both to ensure we     #
-#                are getting maximum coverage                                  #
-#       Validators:  ResultsetComparatorSimplify                               #
-#                      - used on server-server comparisons                     #
-#                    Transformer - used on a single server                     #
-#                      - creates equivalent versions of a single query         # 
-#                    SelectStability - used on a single server                 #
-#                      - ensures the same query produces stable result sets    #
-################################################################################
-
-################################################################################
-# The perl code in {} helps us with bookkeeping for writing more sensible      #
-# queries.  We need to keep track of these items to ensure we get interesting  #
-# and stable queries that find bugs rather than wondering if our query is      #
-# dodgy.                                                                       #
-################################################################################
 query:
 	{ @nonaggregates = () ; $tables = 0 ; $fields = 0 ; $subquery_idx=0 ; $child_subquery_idx=0 ; "" } main_select ;
 
@@ -120,11 +67,11 @@ join_list_disabled:
         ( new_table_item join_type join_list ON (join_condition_item ) ) ;
 
 join_type:
-	INNER JOIN | left_right outer JOIN |
-	INNER JOIN | left_right outer JOIN |
-	INNER JOIN | left_right outer JOIN |
-	INNER JOIN | left_right outer JOIN |
-	INNER JOIN | left_right outer JOIN |
+	INNER JOIN | LEFT outer JOIN |
+	INNER JOIN | LEFT outer JOIN |
+	INNER JOIN | LEFT outer JOIN |
+	INNER JOIN | LEFT outer JOIN |
+	INNER JOIN | LEFT outer JOIN |
 	STRAIGHT_JOIN ;  
 
 join_condition_item:
@@ -201,8 +148,8 @@ general_subquery_union_test_disabled:
     existing_table_item . int_field_name arithmetic_operator all_any int_single_union_subquery_disabled ;
 
 special_subquery:
-    not EXISTS ( int_single_member_subquery ) |
-    not EXISTS ( char_single_member_subquery ) |
+    not EXISTS int_single_member_subquery |
+    not EXISTS char_single_member_subquery |
     not EXISTS int_correlated_subquery |
     not EXISTS char_correlated_subquery  | 
     existing_table_item . int_field_name membership_operator  int_correlated_subquery  |
@@ -215,22 +162,19 @@ int_single_value_subquery:
       subquery_body ) |
     ( SELECT distinct select_option aggregate subquery_table_one_two . int_field_name ) AS { "SQ".$subquery_idx."_field1" } 
       subquery_body ) |
-      subquery_body ) |
-    ( SELECT _digit FROM DUAL ) ;
+      subquery_body );
 
 int_single_member_subquery:
     ( SELECT distinct select_option subquery_table_one_two . int_field_name AS { "SQ".$subquery_idx."_field1" }
       subquery_body
       single_subquery_group_by
-      subquery_having ) |
-    ( SELECT _digit FROM DUAL ) ;
+      subquery_having );
 
 char_single_value_subquery:
     ( SELECT distinct select_option aggregate subquery_table_one_two . char_field_name ) AS { "SQ".$subquery_idx."_field1" } 
       subquery_body ) |
     ( SELECT distinct select_option aggregate subquery_table_one_two . char_field_name ) AS { "SQ".$subquery_idx."_field1" } 
-      subquery_body ) |
-    ( SELECT _char FROM DUAL ) ;
+      subquery_body );
 
 int_single_union_subquery:
     (  SELECT _digit  UNION all_distinct  SELECT _digit  )  ;

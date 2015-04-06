@@ -7,11 +7,14 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class Main {
+	public static String seed;
+
     public static void main(String[] args) throws Exception {
 
+		seed = args[0];
         //take input from file in command line, else use stdin
         String inputFile = null;
-        if ( args.length>0 ) inputFile = args[0];
+        if ( args.length>1 ) inputFile = args[1];
         InputStream is = System.in;
         if ( inputFile!=null ) {
             is = new FileInputStream(inputFile);
