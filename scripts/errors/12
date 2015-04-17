@@ -1,0 +1,20 @@
+
+error in query fuzzing
+-----
+line 2:921 mismatched input 'GROUP BY ' expecting WHERE
+line 2:930 no viable alternative at input 'SQ3_field1  '
+
+
+error in mysql
+-----
+ERROR 1052 (23000) at line 2: Column 'field2' in group statement is ambiguous
+
+
+error in sqlite
+-----
+Error: near line 2: near ".": syntax error
+
+
+error in diff
+-----
+

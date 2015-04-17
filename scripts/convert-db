@@ -1,0 +1,2 @@
+rm db.sqlite
+./mysql2sqlite.sh -u root -h 127.0.0.1 -P 19300 test | sqlite3 db.sqlite

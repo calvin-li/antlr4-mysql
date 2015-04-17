@@ -1,0 +1,19 @@
+
+error in query fuzzing
+-----
+line 2:532 mismatched input ') ' expecting WHERE
+line 2:534 extraneous input ') ' expecting AND_OR
+line 2:570 no viable alternative at input 'alias1 . `col_int_key`  IN (31'
+
+
+error in mysql
+-----
+
+
+error in sqlite
+-----
+
+
+error in diff
+-----
+

@@ -1,0 +1,5 @@
+
+SELECT alias1.`col_varchar_nokey` AS field1, alias2.`col_varchar_key` AS field2, alias3.`col_varchar_key` AS field3,      MIN(  alias1 . `col_int_key` ) AS field1 FROM ( A AS alias1 , CC AS alias2 , CC AS alias3 ) WHERE
+alias3.`col_int_key` < -10 OR alias3.`col_int_key` > 42 OR alias1.`col_int_key` < 0 OR alias1.`col_int_nokey` > -77 OR alias1.`col_int_key` > 14 OR 
+ alias1 . `pk` != ( SELECT   COUNT(  SQ1_alias1 . `pk` ) AS SQ1_field1 FROM ( D AS SQ1_alias1 LEFT OUTER JOIN CC AS SQ1_alias2 ON (SQ1_alias2 . `pk` = SQ1_alias1 . `pk`  ) ) WHERE SQ1_alias1 . `col_varchar_nokey` >= 'q' )   ORDER BY alias1 . `col_varchar_key` , field1 ;
+

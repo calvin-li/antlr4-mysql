@@ -1,0 +1,1 @@
+rm mysql_logs/* sqlite_logs/* diff/* fuzzed/* errors/* queries/*

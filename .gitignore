@@ -3,6 +3,10 @@ out.txt
 gen
 *.iml
 .idea
-logs*
-errors*
-queries*
+antlr4/mysql_logs/*
+antlr4/sqlite_logs/*
+antlr4/diff/*
+antlr4/errors/*
+antlr4/queries/*
+antlr4/fuzzed/*
+randgen/*

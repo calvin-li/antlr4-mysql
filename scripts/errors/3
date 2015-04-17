@@ -1,0 +1,18 @@
+
+error in query fuzzing
+-----
+
+
+error in mysql
+-----
+ERROR 1054 (42S22) at line 2: Unknown column 'SQ1_alias2.pk' in 'field list'
+
+
+error in sqlite
+-----
+Error: near line 2: no such column: SQ1_alias2.pk
+
+
+error in diff
+-----
+
