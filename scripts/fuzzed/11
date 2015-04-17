@@ -1,5 +1,0 @@
-
-SELECT alias1.`col_int_key` AS field1,      MIN(  alias1 . `col_int_nokey` ) AS field1 FROM ( C AS alias1 , (  SELECT   SQ1_alias2 . * FROM ( BB AS SQ1_alias1 , C AS SQ1_alias2 )  ) AS alias2 ) WHERE
-alias1.`col_int_nokey` <= -50 OR alias1.`col_varchar_nokey` > 'uzaaz' OR alias1.`col_int_nokey` >= -55 OR alias1.`col_int_nokey` >= -84 OR 
-(  alias1 . `col_varchar_key`  IN ( SELECT   SQ2_alias1 . `col_varchar_key` AS SQ2_field1 FROM ( CC AS SQ2_alias1 INNER JOIN B AS SQ2_alias2 ON (SQ2_alias2 . `col_varchar_key` = SQ2_alias1 . `col_varchar_key`  OR ( 'u', 'n' )  IN ( SELECT   C_SQ1_alias1 . `col_varchar_key` AS C_SQ1_field1 , SUM(  C_SQ1_alias1 . `col_varchar_nokey` ) AS C_SQ1_field2 FROM C AS C_SQ1_alias1  GROUP BY C_SQ1_field1 HAVING C_SQ1_alias1 . `col_int_nokey` = 3 ) ) ) WHERE SQ2_alias1 . `col_varchar_nokey` <= alias2 . `col_varchar_key` ) ) AND ( alias1 . `col_int_key` = alias1 . `col_int_key` AND alias1 . `pk` = 13 )  HAVING field1 < 'gr' ;
-

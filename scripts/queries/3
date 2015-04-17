@@ -1,3 +1,0 @@
-
-SELECT    MIN(  alias1 . `col_int_nokey` ) AS field1 FROM ( C AS alias1 LEFT OUTER JOIN ( ( C AS alias2 LEFT  JOIN C AS alias3 ON (alias3 . `pk` = alias2 . `pk`  ) ) ) ON (alias3 . `col_int_key` = alias2 . `col_int_key`  ) ) WHERE (   EXISTS ( SELECT   SQ1_alias2 . `pk` AS SQ1_field1 FROM C AS SQ1_alias1 WHERE SQ1_alias1 . `col_varchar_key` < alias1 . `col_varchar_nokey` ) ) AND ( alias1 . `pk` = 150 AND alias1 . `pk` = 6 ) AND alias2 . `col_varchar_nokey` > alias2 . `col_varchar_nokey`   ORDER BY alias1 . `col_varchar_key` DESC , field1 LIMIT 1;
-

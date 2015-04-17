@@ -1,3 +1,0 @@
-
-SELECT    alias1 . `col_varchar_key` AS field1 FROM ( B AS alias1 , (  SELECT   SQ1_alias2 . * FROM ( BB AS SQ1_alias1 , B AS SQ1_alias2 )  ) AS alias2 ) WHERE (  ( alias1 . `col_int_key` , alias1 . `col_int_key` )  IN ( SELECT   SQ2_alias1 . `col_int_key` AS SQ2_field1 , SUM(  SQ2_alias1 . `pk` ) AS SQ2_field2 FROM D AS SQ2_alias1 WHERE SQ2_alias1 . `col_varchar_key` > SQ2_alias1 . `col_varchar_key`   ) ) AND ( alias1 . `col_varchar_key` = 'p' AND alias1 . `col_int_key` = 164 )  ORDER BY alias1 . `col_varchar_key` , alias1 .`pk` , field1 ;
-

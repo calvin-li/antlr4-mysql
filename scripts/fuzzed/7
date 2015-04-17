@@ -1,5 +1,0 @@
-
-SELECT alias1.`col_varchar_key` AS field6, alias2.`col_varchar_key` AS field7, alias3.`col_int_key` AS field8,      alias1 . `col_int_key` AS field1 , alias1 . `col_varchar_nokey` AS field2 , alias1 . `pk` AS field3 , alias1 . `col_int_key` AS field4 , alias1 . `col_int_key` AS field5 FROM ( CC AS alias1 , D AS alias2 , CC AS alias3 ) WHERE
-alias2.`col_int_nokey` > -56 OR alias3.`col_varchar_nokey` <= 'rwfid' OR alias1.`col_varchar_nokey` <= 'dlrsm' OR alias2.`col_int_nokey` > 57 OR alias2.`col_int_nokey` >= 75 OR 
-(   EXISTS ( SELECT   SQ1_alias1 . `pk` AS SQ1_field1 FROM C AS SQ1_alias1    ) ) AND alias1 . `pk` > 69 AND alias1 . `pk` < ( 69 + 248 )  ;
-

@@ -1,5 +1,0 @@
-
-SELECT alias1.`col_varchar_nokey` AS field4, alias2.`col_varchar_key` AS field5,      alias2 . `col_int_key` AS field1 , alias2 . `col_int_key` AS field2 , alias2 . `col_int_key` AS field3 FROM ( C AS alias1 INNER JOIN C AS alias2 ON (alias2 . `col_varchar_key` = alias1 . `col_varchar_key`  ) ) WHERE
-
-(   EXISTS ( SELECT   SQ1_alias1 . `pk` AS SQ1_field1 FROM CC AS SQ1_alias1    ) ) OR ( alias1 . `pk` = 144 AND alias1 . `col_int_key` = 76 ) AND ( alias2 . `col_varchar_key` = 'z' AND alias1 . `col_varchar_key` != alias2 . `col_varchar_key` )  ORDER BY alias1 . `col_varchar_key` DESC , field1, field2, field3 ;
-
